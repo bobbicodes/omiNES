@@ -14,7 +14,7 @@ var frameBuffer32 = new Uint32Array(frameBuffer);
 // =============================================
 
 var audio = new AudioContext();
-var audioprocessor = audio.createScriptProcessor(2048, 0, 2);
+var audioprocessor = audio.createScriptProcessor(2048, 0, 1);
 audioprocessor.connect(audio.destination);
 
 // When the Audio processor requests new samples to play
@@ -26,7 +26,7 @@ audioprocessor.onaudioprocess = audioEvent => {
     
       // Output (play) the buffers
       audioEvent.outputBuffer.getChannelData(0)[i] = leftSamples[currentSample];
-      audioEvent.outputBuffer.getChannelData(1)[i] = rightSamples[currentSample];
+      //audioEvent.outputBuffer.getChannelData(1)[i] = rightSamples[currentSample];
       currentSample++;
     }
   }
@@ -57,9 +57,9 @@ var start = file => {
     },
     
     // Add new audio samples to the Audio buffers
-    onAudioSample: function(left, right){
+    onAudioSample: function(left){
       leftSamples.push(left);
-      rightSamples.push(right);
+      //rightSamples.push(right);
     }
   });
 
@@ -87,6 +87,7 @@ var start = file => {
   
   // Controller #1 keys listeners
   onkeydown = e => {
+    e.preventDefault()
     if(e.keyCode == 69) buttonDown(1, Controller.BUTTON_LEFT);
     else if(e.keyCode == 82) buttonDown(1, Controller.BUTTON_UP);
     else if(e.keyCode == 68) buttonDown(1, Controller.BUTTON_RIGHT);
@@ -98,6 +99,7 @@ var start = file => {
   }
 
   onkeyup = e => {
+    e.preventDefault()
     if(e.keyCode == 69) buttonUp(1, Controller.BUTTON_LEFT);
     else if(e.keyCode == 82) buttonUp(1, Controller.BUTTON_UP);
     else if(e.keyCode == 68) buttonUp(1, Controller.BUTTON_RIGHT);

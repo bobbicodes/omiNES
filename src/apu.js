@@ -6,6 +6,20 @@ var CPU_FREQ_NTSC = 1789772.5; //1789772.72727272d;
 // APU
 // ====
 
+var mycounter = 0;
+
+function quantizeTri(sample) {
+  let vals = [0, 16, 32, 48, 64, 80, 96, 112, 128, 144, 160, 176, 192, 208, 224, 240, 256]
+  while (vals.length != 0) {
+      if ((Math.abs(vals[0] - sample)) < 16) {
+          return vals[0]
+      } else {
+          vals = vals.slice(1)
+      }
+  }
+}
+
+
 export var APU = {
   frameIrqCounter: null,
   frameIrqCounterMax: 4,
@@ -136,7 +150,6 @@ export var APU = {
     // TODO
   },
   
-  // eslint-disable-next-line no-unused-vars
   readReg: address => {
     // Read 0x4015:
     var tmp = 0;
@@ -457,6 +470,7 @@ export var APU = {
     // End of 240Hz tick
   },
 
+
   // Samples the channels, mixes the output together, then writes to buffer.
   sample: () => {
     var sq_index, tnd_index;
@@ -487,6 +501,8 @@ export var APU = {
 
     // Stereo sound.
 
+    APU.smpTriangle = quantizeTri(APU.smpTriangle)
+
     // Left channel:
     sq_index =
       (APU.smpSquare1 * APU.stereoPosLSquare1 +
@@ -504,7 +520,8 @@ export var APU = {
       tnd_index = APU.tnd_table.length - 1;
     }
     var sampleValueL =
-      APU.square_table[sq_index] + APU.tnd_table[tnd_index] - APU.dcValue;
+      APU.square_table[sq_index] + 
+      APU.tnd_table[tnd_index] - APU.dcValue;
 
     // Right channel:
     sq_index =
@@ -546,7 +563,7 @@ export var APU = {
     }
 
     if(NES.onAudioSample){
-      NES.onAudioSample(sampleValueL / 32768, sampleValueR / 32768);
+      NES.onAudioSample(sampleValueL / 32768);
     }
 
     // Reset sampled values:
@@ -607,7 +624,6 @@ export var APU = {
   },
 
   initLengthLookup: () => {
-    // prettier-ignore
     APU.lengthLookup = [
             0x0A, 0xFE,
             0x14, 0x02,
@@ -1016,14 +1032,13 @@ ChannelNoise.prototype = {
 var ChannelSquare = function(papu, square1){
   this.papu = papu;
 
-  // prettier-ignore
   this.dutyLookup = [
          0, 1, 0, 0, 0, 0, 0, 0,
          0, 1, 1, 0, 0, 0, 0, 0,
          0, 1, 1, 1, 1, 0, 0, 0,
          1, 0, 0, 1, 1, 1, 1, 1
     ];
-  // prettier-ignore
+
   this.impLookup = [
          1,-1, 0, 0, 0, 0, 0, 0,
          1, 0,-1, 0, 0, 0, 0, 0,
