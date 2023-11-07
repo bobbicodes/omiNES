@@ -14,6 +14,8 @@ Live demo: https://bobbicodes.github.io/omiNES/
 
 Controls are arrow keys, X, C, Esc, Enter. Configure in [main.js](https://github.com/bobbicodes/omiNES/blob/fae05c45f43bbd38deae37a7549e139917fe122f/main.js#L93).
 
+Currently only [mapper 0](https://www.nesdev.org/wiki/NROM) (NROM) is implemented. See [here](https://nesdir.github.io/mapper0.html) for compatible games.
+
 ### Running locally (develop)
 
 ```
