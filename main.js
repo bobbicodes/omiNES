@@ -1,6 +1,6 @@
 import './style.css'
 import { NES } from "./src/nes";
-import { Controller } from "./src/controller";
+import { Controller, buttonDown, buttonUp } from "./src/controller";
 
 var canvas = document.getElementById("frameCanvas")
 
@@ -87,30 +87,31 @@ var start = file => {
   
   // Controller #1 keys listeners
   onkeydown = e => {
-    if(e.keyCode == 37) NES.buttonDown(1, Controller.BUTTON_LEFT);
-    else if(e.keyCode == 38) NES.buttonDown(1, Controller.BUTTON_UP);
-    else if(e.keyCode == 39) NES.buttonDown(1, Controller.BUTTON_RIGHT);
-    else if(e.keyCode == 40) NES.buttonDown(1, Controller.BUTTON_DOWN);
-    else if(e.keyCode == 88) NES.buttonDown(1, Controller.BUTTON_A); // X
-    else if(e.keyCode == 67) NES.buttonDown(1, Controller.BUTTON_B); // C
-    else if(e.keyCode == 27) NES.buttonDown(1, Controller.BUTTON_SELECT);
-    else if(e.keyCode == 13) NES.buttonDown(1, Controller.BUTTON_START);
+    if(e.keyCode == 37) buttonDown(1, Controller.BUTTON_LEFT);
+    else if(e.keyCode == 38) buttonDown(1, Controller.BUTTON_UP);
+    else if(e.keyCode == 39) buttonDown(1, Controller.BUTTON_RIGHT);
+    else if(e.keyCode == 40) buttonDown(1, Controller.BUTTON_DOWN);
+    else if(e.keyCode == 88) buttonDown(1, Controller.BUTTON_A); // X
+    else if(e.keyCode == 67) buttonDown(1, Controller.BUTTON_B); // C
+    else if(e.keyCode == 27) buttonDown(1, Controller.BUTTON_SELECT);
+    else if(e.keyCode == 13) buttonDown(1, Controller.BUTTON_START);
   }
 
   onkeyup = e => {
-    if(e.keyCode == 37) NES.buttonUp(1, Controller.BUTTON_LEFT);
-    else if(e.keyCode == 38) NES.buttonUp(1, Controller.BUTTON_UP);
-    else if(e.keyCode == 39) NES.buttonUp(1, Controller.BUTTON_RIGHT);
-    else if(e.keyCode == 40) NES.buttonUp(1, Controller.BUTTON_DOWN);
-    else if(e.keyCode == 88) NES.buttonUp(1, Controller.BUTTON_A); // X
-    else if(e.keyCode == 67) NES.buttonUp(1, Controller.BUTTON_B); // C
-    else if(e.keyCode == 27) NES.buttonUp(1, Controller.BUTTON_SELECT);
-    else if(e.keyCode == 13) NES.buttonUp(1, Controller.BUTTON_START);
+    if(e.keyCode == 37) buttonUp(1, Controller.BUTTON_LEFT);
+    else if(e.keyCode == 38) buttonUp(1, Controller.BUTTON_UP);
+    else if(e.keyCode == 39) buttonUp(1, Controller.BUTTON_RIGHT);
+    else if(e.keyCode == 40) buttonUp(1, Controller.BUTTON_DOWN);
+    else if(e.keyCode == 88) buttonUp(1, Controller.BUTTON_A); // X
+    else if(e.keyCode == 67) buttonUp(1, Controller.BUTTON_B); // C
+    else if(e.keyCode == 27) buttonUp(1, Controller.BUTTON_SELECT);
+    else if(e.keyCode == 13) buttonUp(1, Controller.BUTTON_START);
   }
 };
 
 // Load ROM from file input
 fileInput.onchange = () => {
+  audio.resume()
   var fileReader = new FileReader();
   fileReader.readAsBinaryString(fileInput.files[0]);
   fileReader.onload = () => {
