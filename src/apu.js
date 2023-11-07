@@ -6,20 +6,6 @@ var CPU_FREQ_NTSC = 1789772.5; //1789772.72727272d;
 // APU
 // ====
 
-var mycounter = 0;
-
-function quantizeTri(sample) {
-  let vals = [0, 16, 32, 48, 64, 80, 96, 112, 128, 144, 160, 176, 192, 208, 224, 240, 256]
-  while (vals.length != 0) {
-      if ((Math.abs(vals[0] - sample)) < 16) {
-          return vals[0]
-      } else {
-          vals = vals.slice(1)
-      }
-  }
-}
-
-
 export var APU = {
   frameIrqCounter: null,
   frameIrqCounterMax: 4,
@@ -501,7 +487,7 @@ export var APU = {
 
     // Stereo sound.
 
-    APU.smpTriangle = quantizeTri(APU.smpTriangle)
+    APU.smpTriangle = APU.smpTriangle & 0xF0
 
     // Left channel:
     sq_index =

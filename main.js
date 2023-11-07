@@ -83,7 +83,7 @@ var start = file => {
 
   // 60 fps loop
   clearInterval(interval);
-  interval = setInterval(NES.frame, 16);
+  interval = setInterval(NES.frame, 17);
   
   // Controller #1 keys listeners
   onkeydown = e => {

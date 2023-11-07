@@ -13,7 +13,7 @@ export var NES = {
       
       // Frame handler
       NES.onFrame = options.onFrame;
-      NES.preferredFrameRate = 60;  // frames per second
+      NES.preferredFrameRate = 55;  // frames per second
       NES.frameTime = 16.67;        // ms per frame
       
       // Audio handler
