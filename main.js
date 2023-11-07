@@ -87,23 +87,23 @@ var start = file => {
   
   // Controller #1 keys listeners
   onkeydown = e => {
-    if(e.keyCode == 37) buttonDown(1, Controller.BUTTON_LEFT);
-    else if(e.keyCode == 38) buttonDown(1, Controller.BUTTON_UP);
-    else if(e.keyCode == 39) buttonDown(1, Controller.BUTTON_RIGHT);
-    else if(e.keyCode == 40) buttonDown(1, Controller.BUTTON_DOWN);
-    else if(e.keyCode == 88) buttonDown(1, Controller.BUTTON_A); // X
-    else if(e.keyCode == 67) buttonDown(1, Controller.BUTTON_B); // C
+    if(e.keyCode == 69) buttonDown(1, Controller.BUTTON_LEFT);
+    else if(e.keyCode == 82) buttonDown(1, Controller.BUTTON_UP);
+    else if(e.keyCode == 68) buttonDown(1, Controller.BUTTON_RIGHT);
+    else if(e.keyCode == 78) buttonDown(1, Controller.BUTTON_DOWN);
+    else if(e.keyCode == 32) buttonDown(1, Controller.BUTTON_A); // X
+    else if(e.keyCode == 72) buttonDown(1, Controller.BUTTON_B); // C
     else if(e.keyCode == 27) buttonDown(1, Controller.BUTTON_SELECT);
     else if(e.keyCode == 13) buttonDown(1, Controller.BUTTON_START);
   }
 
   onkeyup = e => {
-    if(e.keyCode == 37) buttonUp(1, Controller.BUTTON_LEFT);
-    else if(e.keyCode == 38) buttonUp(1, Controller.BUTTON_UP);
-    else if(e.keyCode == 39) buttonUp(1, Controller.BUTTON_RIGHT);
-    else if(e.keyCode == 40) buttonUp(1, Controller.BUTTON_DOWN);
-    else if(e.keyCode == 88) buttonUp(1, Controller.BUTTON_A); // X
-    else if(e.keyCode == 67) buttonUp(1, Controller.BUTTON_B); // C
+    if(e.keyCode == 69) buttonUp(1, Controller.BUTTON_LEFT);
+    else if(e.keyCode == 82) buttonUp(1, Controller.BUTTON_UP);
+    else if(e.keyCode == 68) buttonUp(1, Controller.BUTTON_RIGHT);
+    else if(e.keyCode == 78) buttonUp(1, Controller.BUTTON_DOWN);
+    else if(e.keyCode == 32) buttonUp(1, Controller.BUTTON_A); // X
+    else if(e.keyCode == 72) buttonUp(1, Controller.BUTTON_B); // C
     else if(e.keyCode == 27) buttonUp(1, Controller.BUTTON_SELECT);
     else if(e.keyCode == 13) buttonUp(1, Controller.BUTTON_START);
   }
