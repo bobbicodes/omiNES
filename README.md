@@ -8,6 +8,8 @@ I found a great article, [Golfing a NES emulator in JS](https://xem.github.io/ar
 
 ## Usage
 
+Unfortunately, it only seems to run well on Chrome/Chromium.
+
 Live demo: https://bobbicodes.github.io/omiNES/
 
 ### Running locally (develop)
