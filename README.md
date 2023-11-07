@@ -8,7 +8,7 @@ I found a great article, [Golfing a NES emulator in JS](https://xem.github.io/ar
 
 ## Usage
 
-TODO: host on Github Pages
+Live demo: https://bobbicodes.github.io/omiNES/
 
 ### Running locally (develop)
 
