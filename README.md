@@ -12,6 +12,8 @@ Unfortunately, it only seems to run well on Chrome/Chromium.
 
 Live demo: https://bobbicodes.github.io/omiNES/
 
+Controls are arrow keys, X, C, Esc, Enter. Configure in [main.js](https://github.com/bobbicodes/omiNES/blob/fae05c45f43bbd38deae37a7549e139917fe122f/main.js#L93).
+
 ### Running locally (develop)
 
 ```
